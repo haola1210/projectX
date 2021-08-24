@@ -1,21 +1,25 @@
 import React from 'react';
 import bg from "../assets/stayhome.jpg"
+import Footer from '../components/Footer';
 
 function Login(props) {
     return (
-        <div className="flex-grow w-full flex flex-wrap overflow-y-scroll">
+        <div className="flex-grow w-full flex flex-wrap overflow-y-auto">
 
 
             <div className="w-full sm:w-1/2 h-full px-6 flex flex-col justify-center">
-                <h1 className="text-4xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-                    Cách li ở nhà, chẳng sợ cô đơn
+                <div className="max-w-lg">
+
+                    <h1 className="text-4xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+                        Cách li ở nhà, chẳng sợ cô đơn
                     </h1>
-                <p className="text-sm font-semibold text-gray-500 mb-4">
-                    Năm Cô Vi thứ 3 sau Công nguyên, 
-                    dù triều đình đã hành hiệp trượng nghĩa nhưng đáng tiếc thay, 
-                    biến chủng lộng hành. Ai ai cũng chịu nhiều khốn khổ. <br />
-                    Đối diện với tình cảnh đó đã có Dinolo kết nối triệu đồng bào ❤️
-                </p>
+                    <p className="text-sm font-semibold text-gray-500 mb-4">
+                        Năm Cô Vi thứ 3 sau Công nguyên, 
+                        dù triều đình đã hành hiệp trượng nghĩa nhưng đáng tiếc thay, 
+                        biến chủng lộng hành. Ai ai cũng chịu nhiều khốn khổ. <br />
+                        Đối diện với tình cảnh đó đã có Dinolo kết nối triệu đồng bào ❤️
+                    </p>
+                </div>
                 <div className="max-w-xs">
 
                     <h2 className="text-lg font-semibold text-gray-600 dark:text-gray-400 mb-1">
@@ -47,9 +51,7 @@ function Login(props) {
             <div className="w-full sm:w-1/2 h-full bg-center bg-contain bg-no-repeat" style={{ backgroundImage : `url(${bg})` }}>         
             </div>
 
-            <div className="w-full  bg-gray-800 dark:bg-black p-4 text-center text-gray-400 font-bold transition duration-500">
-                @ Designed & developed by Hao Le 2k
-            </div>
+            <Footer />
 
         </div>
     );

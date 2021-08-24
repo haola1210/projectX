@@ -8,6 +8,10 @@
             select-none
             cursor-pointer
     }
+
+    li{
+        @apply list-none
+    }
 }
 
 @layer components {
@@ -61,5 +65,25 @@
 
     }
 
+    .avatar {
+        @apply
+            h-9  
+            w-9
+            rounded-full
+            object-cover
+            object-center
+     
+    }
     
+    .rounded-btn{
+        @apply 
+            p-1
+            rounded-full
+            border-2
+            border-transparent
+            hover:border-blue-400
+            cursor-pointer
+            select-none
+    }
+
 }
