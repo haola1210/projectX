@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    a{
+        @apply
+            select-none
+            cursor-pointer
+    }
+}
+
+@layer components {
+    .styled-btn{
+        @apply 
+            text-gray-100
+            select-none   
+            font-semibold 
+            
+            border-transparent 
+            px-4 
+            py-1
+            my-2
+            rounded-lg 
+            w-max
+
+            bg-gradient-to-r
+            from-purple-500
+            via-blue-500
+            to-green-500
+             
+            hover:from-yellow-500
+            hover:to-pink-500
+            
+            active:from-green-500
+            active:to-yellow-500
+
+            active:ring-2 
+            active:ring-blue-500
+            active:ring-offset-2
+            active:ring-offset-yellow-100
+    }
+
+    .styled-input{
+        @apply 
+            dark:bg-gray-200
+            px-4
+            py-1
+            my-1
+            rounded-lg
+            outline-none
+            text-gray-600
+
+            border-2
+            border-transparent
+            hover:border-blue-200
+            focus:border-blue-500
+
+            w-full
+            max-w-xs
+
+    }
+
+    
+}
