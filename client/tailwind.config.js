@@ -973,6 +973,7 @@ module.exports = {
       ringOffsetWidth : ["active"],
       ringOffsetColor : ["active"],
       gradientColorStops : ["active"],
+      opacity : ["disabled"]
   
     }
   },

@@ -75,15 +75,36 @@
      
     }
     
+    .temp-avatar{
+    @apply 
+        rounded-full
+        flex
+        justify-center
+        items-center
+        font-semibold
+        text-gray-300
+    }
+        
+    .smooth-transform {
+        @apply
+            transition
+            duration-500
+    }
+
     .rounded-btn{
         @apply 
+            flex
+            justify-center
+            items-center
             p-1
             rounded-full
             border-2
             border-transparent
             hover:border-blue-400
             cursor-pointer
-            select-none
+            select-none;
+        @apply smooth-transform
     }
 
+    
 }

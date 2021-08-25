@@ -1,14 +1,33 @@
 import React from 'react';
 import img from "../assets/stayhome.jpg"
 import { FiSettings } from "react-icons/fi";
-import { BiSearchAlt } from "react-icons/bi";
-import DropDown from './DropDown';
+import { FaUserEdit } from "react-icons/fa";
+import { RiImageEditLine, RiLockPasswordLine } from "react-icons/ri";
+import ButtonDropDown from "./DropDown/ButtonDropDown"
+import SearchDropDown from './DropDown/SearchDropDown';
+import TempAvatar from './TempAvatar';
 
 const SettingBtn = (props) => (
     <span className="rounded-btn bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500">
         <FiSettings />
     </span>
 )
+
+const SettingItem = ({icon, content}) => (
+    <div className="flex justify-center items-center">
+        <span className="pr-1">{icon}</span>
+        
+        <span className="">{content}</span>
+    </div>
+)
+
+const settingList = [
+    { icon : <FaUserEdit />, content : "Đổi tên" },
+    { icon : <RiImageEditLine />, content : "Đổi avatar" },
+    { icon : <RiLockPasswordLine />, content : "Đổi mật khẩu" },
+]
+
+const listOfSettingItem = settingList.map(({ icon, content }) => <SettingItem icon={icon} content={content} />)
 
 function ChatMananger(props) {
     const userName = "Hào"
@@ -27,26 +46,21 @@ function ChatMananger(props) {
                         </h2>
                     </span>
 
-                    {/* <DropDown auto={true} list={[1, 2, 3]} Btn={SettingBtn} />  */}
-                    <span>
-                        <SettingBtn />
-                    </span>
+                    <ButtonDropDown auto={true} list={listOfSettingItem} Btn={SettingBtn} /> 
+                    {/*  */}
 
                 </div>
 
                 {/* search input & result */}
-                <div className="w-full px-3 py-2 flex justify-center items-center">
-                    <input type="text" className="styled-input rounded-full" placeholder="Search something"/>
-                    <span className="rounded-btn m-2 bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500">
-                        <BiSearchAlt />
-                    </span>
-                </div>
+                <SearchDropDown />
 
             </div>
 
             {/* body */}
             <div className="w-full flex-grow px-2">
-
+                <TempAvatar character="N" size="sm" />
+                <TempAvatar character="N" size="md" />
+                <TempAvatar character="N" size="lg" />
             </div>
 
         </div>
