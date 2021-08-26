@@ -12,6 +12,29 @@
     li{
         @apply list-none
     }
+
+
+    ::-webkit-scrollbar {
+    width: 4px;
+    }
+
+
+    ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+        @apply
+            bg-blue-400
+            hover:bg-blue-500
+            dark:bg-yellow-600
+            dark:hover:bg-yellow-700;
+        border-radius : 10px
+    }
+
+
 }
 
 @layer components {

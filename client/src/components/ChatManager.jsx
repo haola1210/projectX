@@ -6,6 +6,7 @@ import { RiImageEditLine, RiLockPasswordLine } from "react-icons/ri";
 import ButtonDropDown from "./DropDown/ButtonDropDown"
 import SearchDropDown from './DropDown/SearchDropDown';
 import TempAvatar from './TempAvatar';
+import NewMessageBox from './NewMessage/NewMessageBox';
 
 const SettingBtn = (props) => (
     <span className="rounded-btn bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500">
@@ -32,10 +33,10 @@ const listOfSettingItem = settingList.map(({ icon, content }) => <SettingItem ic
 function ChatMananger(props) {
     const userName = "Hào"
     return (
-        <div className="w-full h-full flex flex-col bg-gray-200 dark:bg-gray-800 transition duration-500">
+        <div className="w-full max-w-md h-full flex flex-col bg-gray-200 dark:bg-gray-800 transition duration-500">
 
             {/*header */}
-            <div className="w-full flex flex-col divide-y-2 bg-gray-300 dark:bg-gray-900 transition duration-500"> 
+            <div className="w-full flex flex-col bg-gray-300 dark:bg-gray-900 transition duration-500 border-b-2"> 
                 
                 {/*user & setting icon*/} 
                 <div className="w-full flex flex-row flex-none justify-between items-center p-3">  
@@ -57,10 +58,8 @@ function ChatMananger(props) {
             </div>
 
             {/* body */}
-            <div className="w-full flex-grow px-2">
-                <TempAvatar character="N" size="sm" />
-                <TempAvatar character="N" size="md" />
-                <TempAvatar character="N" size="lg" />
+            <div className="w-full flex-grow">
+                <NewMessageBox />
             </div>
 
         </div>
