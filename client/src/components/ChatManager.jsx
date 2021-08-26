@@ -36,10 +36,10 @@ function ChatMananger(props) {
         <div className="w-full max-w-md h-full flex flex-col bg-gray-200 dark:bg-gray-800 transition duration-500">
 
             {/*header */}
-            <div className="w-full flex flex-col bg-gray-300 dark:bg-gray-900 transition duration-500 border-b-2"> 
+            <div className="flex flex-col bg-gray-300 dark:bg-gray-900 transition duration-500 border-b-2"> 
                 
                 {/*user & setting icon*/} 
-                <div className="w-full flex flex-row flex-none justify-between items-center p-3">  
+                <div className="flex flex-row flex-none justify-between items-center p-3">  
                     <span className="flex flex-row items-center">
                         <img className="avatar" src={img} alt="user avatar" />
                         <h2 className="font-semibold px-1 text-gray-700 dark:text-gray-400 transition duration-500">
@@ -58,7 +58,7 @@ function ChatMananger(props) {
             </div>
 
             {/* body */}
-            <div className="w-full flex-grow">
+            <div className="flex-grow relative overflow-y-auto">
                 <NewMessageBox />
             </div>
 

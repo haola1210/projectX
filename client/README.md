@@ -8,3 +8,6 @@ viết dropdown result of searching thì hơi hard
     truyền state và những thứ cần thiết từ custom hook sang cpn ui để xử lí logic render
 
 create axios instance để sau này tiện dùng, config và xử lí refresh token
+
+dùng flexbox muốn container scroll khi child quá nhiều thì theo link này: https://stackoverflow.com/questions/31870663/make-child-flexbox-container-scrollable
+
