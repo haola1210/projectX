@@ -9,7 +9,7 @@ import TempAvatar from './TempAvatar';
 import NewMessageBox from './NewMessage/NewMessageBox';
 
 const SettingBtn = (props) => (
-    <span className="rounded-btn bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500">
+    <span className="rounded-btn bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500 smooth-transform">
         <FiSettings />
     </span>
 )

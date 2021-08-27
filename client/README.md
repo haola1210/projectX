@@ -11,3 +11,5 @@ create axios instance để sau này tiện dùng, config và xử lí refresh t
 
 dùng flexbox muốn container scroll khi child quá nhiều thì theo link này: https://stackoverflow.com/questions/31870663/make-child-flexbox-container-scrollable
 
+custom lại textarea thì mở component đấy ra xem. tìm đc cách dùng useRef khá hay.
+
