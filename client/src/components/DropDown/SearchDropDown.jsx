@@ -17,7 +17,7 @@ function SearchDropDown() {
                 (<div 
                     onClick={() => setShow(false)} 
                     className="absolute w-screen h-screen bg-black bg-opacity-20 top-0 left-0" 
-                    style={{zIndex : 0}}
+                    style={{zIndex : 1}}
                 />)
             }
             <div className="relative">
@@ -33,7 +33,7 @@ function SearchDropDown() {
                 {   
                     show &&
                     <div 
-                        style={{zIndex : 1}}
+                        style={{zIndex : 2}}
                         className="absolute w-full max-w-sx bg-gray-200 flex flex-col top-12 left-0 rounded-md"
                     >
                         {

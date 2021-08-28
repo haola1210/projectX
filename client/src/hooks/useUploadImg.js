@@ -33,10 +33,6 @@ const reducer = (state, action) => {
 const useUploadImg = () => {
     const [data, dispatch] = useReducer(reducer, initialState)
 
-    useEffect(() => {
-        console.log(data)
-    })
-
     const onChange = (e) => {
         console.log("uploaded")
         console.log(e.target.files)
