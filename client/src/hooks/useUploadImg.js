@@ -33,12 +33,14 @@ const reducer = (state, action) => {
 const useUploadImg = () => {
     const [data, dispatch] = useReducer(reducer, initialState)
 
-    const onChange = (e) => {
-        console.log("uploaded")
-        console.log(e.target.files)
-        const files = [...e.target.files]
-        const dataURLs = files.map(file => URL.createObjectURL(file))
+    useEffect(() => {
+        console.log(data)
+    })
 
+    const onChange = (e, fileList) => {
+        const files = e !== undefined ? [...e.target.files] : [...fileList]
+        const dataURLs = files.map(file => URL.createObjectURL(file))
+        console.log(files, dataURLs)
         dispatch({
             type: "UPLOAD",
             payload : {
@@ -47,7 +49,7 @@ const useUploadImg = () => {
             }
         })
 
-        e.target.value = null
+        if(e !== undefined) e.target.value = null
     }
 
     const onDone = () => {

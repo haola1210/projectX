@@ -19,7 +19,7 @@ function ChatFooter(props) {
     return (
         <>  
             {/* preview upload images */}
-            <div className="flex flex-row justify-start items-center">
+            <div className="flex flex-row flex-wrap justify-start items-center">
                 {
                     data.previews.map((url, index) => 
                         <PreviewImg 
@@ -35,6 +35,7 @@ function ChatFooter(props) {
             <div className="w-full flex flex-row items-end p-2">
                 <CustomTextArea 
                     setText={setText}
+                    onPasteFile={onChange}
                     className="flex-grow p-2 text-sm mr-2" 
                     placeholder="Nhắn gì đó đi..."
                 />

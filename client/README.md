@@ -19,3 +19,5 @@ custom lại textarea thì mở component đấy ra xem. tìm đc cách dùng us
 
 emoji picker của react khá dễ dùng, tuy nhiên hiện tại phải đặt vào trong custom textarea cho dễ thêm vào string value đang gõ.
 
+bonus cho phan upload file: có thể upload file từ clipboard bằng cách paste vào textarea. sửa lại hàm onchage trong useUploadImg 1 xíu (ngoài nhận params e thì còn nhận 1 option param là files) nếu upload bằng input type file thì dùng e.target còn upload bằng paste thì dùng files
+    trong custom textarea có hàm onpaste, check xem nếu có file thì call onchange của useUploadImg với param files.
