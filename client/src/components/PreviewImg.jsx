@@ -27,10 +27,14 @@ function PreviewImg({ src, remove }) {
 
             {/* preview small image */}
             <div className="relative p-2 " >
-                <span 
-                    className="absolute top-0 right-0 rounded-full bg-yellow-400 hover:bg-red-500 text-gray-800" 
-                    onClick={remove}
-                ><TiDeleteOutline /></span>
+                {
+                    remove &&
+                    <span 
+                        className="absolute top-0 right-0 rounded-full bg-yellow-400 hover:bg-red-500 text-gray-800" 
+                        onClick={remove}
+                    ><TiDeleteOutline /></span>
+                }
+                
                 <img 
                     onClick={() => setShow(true)}
                     src={src}

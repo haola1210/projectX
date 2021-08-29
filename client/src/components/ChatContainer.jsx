@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TempAvatar from './TempAvatar';
 import { 
     IoAlbumsOutline, 
     IoAlbums
 } from "react-icons/io5";
+import { 
+
+    IoMdArrowRoundBack
+} from "react-icons/io";
 import ChatFooter from './ChatFooter';
+import SentAlbum from './SentAlbum';
 
 
 function ChatContainer(props) {
+
+    const [isCollapse, setIsCollapse] = useState(true)
+
     return (
         <div className="flex-grow h-full flex flex-row">
 
             {/* main window (chat history, chat header, chat footer) */}
-            <div className="flex-grow flex flex-col h-full">
+            <div className={`flex-grow ${isCollapse ? 'flex' : 'hidden sm:flex'} flex-col h-full sm:flex-grow`}>
 
                 {/* header */}
                 <div className="w-full flex flex-row justify-between items-center bg-gray-200 dark:bg-gray-700 smooth-transform rounded-b-md">
@@ -33,13 +41,13 @@ function ChatContainer(props) {
                     </div>
                     
                     {/* button collapse album */}
-                    <div className="p-2">
+                    <div className="p-2" onClick={() => setIsCollapse(prev => !prev)}>
                         <span className="rounded-btn ">
                             {/* unactive button */}
-                            <IoAlbumsOutline />
+                            { isCollapse && <IoAlbumsOutline /> }
 
                             {/* active button */}
-                            {/* <IoAlbums /> */}
+                            { !isCollapse && <IoAlbums /> }
                         </span>
                     </div>
 
@@ -58,8 +66,20 @@ function ChatContainer(props) {
             </div>
 
             {/* album of sent images */}
-            <div className="">
-                
+            <div className={`${isCollapse ? 'hidden' : 'flex'} flex-col w-full h-full bg-gray-300 dark:bg-gray-800 sm:max-w-xs smooth-transform`}>
+                {/* back icon */}
+                <div className="flex p-2">
+                    <span 
+                        className="rounded-btn sm:hidden"
+                        onClick={() => setIsCollapse(true)}
+                    >
+                        <IoMdArrowRoundBack />
+                    </span>
+
+                </div>
+                {
+                    <SentAlbum onCollapse={setIsCollapse} />
+                }
             </div>
 
 

@@ -4,7 +4,7 @@ import ChatManager from '../components/ChatManager';
 function Main(props) {
     return (
         <div className="w-full flex-grow flex flex-row divide-x">
-            <ChatManager />
+            {/* <ChatManager /> */}
             <ChatContainer />
         </div>
     );
