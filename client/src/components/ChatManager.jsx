@@ -33,7 +33,7 @@ const listOfSettingItem = settingList.map(({ icon, content }) => <SettingItem ic
 function ChatMananger(props) {
     const userName = "Hào"
     return (
-        <div className="w-full max-w-md h-full flex flex-col bg-gray-200 dark:bg-gray-800 transition duration-500">
+        <div className="w-full sm:max-w-xs h-full flex flex-col bg-gray-200 dark:bg-gray-800 transition duration-500">
 
             {/*header */}
             <div className="flex flex-col bg-gray-300 dark:bg-gray-900 transition duration-500 border-b-2"> 

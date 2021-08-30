@@ -1,6 +1,7 @@
 import React from 'react';
 import bg from "../assets/stayhome.jpg"
 import Footer from '../components/Footer';
+import { Link } from "react-router-dom"
 
 function Login(props) {
     return (
@@ -37,7 +38,7 @@ function Login(props) {
                         <div className="mt-4 mb-2 text-center">
                             <label className="text-gray-500 ">Chưa có tài khoản?</label>
                             {" "}
-                            <a className="text-blue-500 font-semibold" >Đăng kí ngay!</a>
+                            <Link to="/sign-up" className="text-blue-500 font-semibold" >Đăng kí ngay!</Link>
                         </div>
                         <div className="flex justify-between py-4">
                             <a  className="text-xs font-semibold text-gray-200 bg-blue-600 outline-none p-2 rounded-md">Đăng nhập với Facebook</a>

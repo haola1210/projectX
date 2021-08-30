@@ -21,3 +21,7 @@ emoji picker của react khá dễ dùng, tuy nhiên hiện tại phải đặt 
 
 bonus cho phan upload file: có thể upload file từ clipboard bằng cách paste vào textarea. sửa lại hàm onchage trong useUploadImg 1 xíu (ngoài nhận params e thì còn nhận 1 option param là files) nếu upload bằng input type file thì dùng e.target còn upload bằng paste thì dùng files
     trong custom textarea có hàm onpaste, check xem nếu có file thì call onchange của useUploadImg với param files.
+
+
+sử dụng useRouteMatch để xử lí logic render chỗ cpn Main, switch không là chưa đủ vì đụng responsive nữa
+chi tiết xem trong cpm Main phần comment

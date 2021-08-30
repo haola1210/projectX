@@ -11,10 +11,12 @@ import {
 import ChatFooter from './ChatFooter';
 import SentAlbum from './SentAlbum';
 
+import { useHistory } from "react-router-dom"
 
 function ChatContainer(props) {
 
     const [isCollapse, setIsCollapse] = useState(true)
+    const history = useHistory()
 
     return (
         <div className="flex-grow h-full flex flex-row">
@@ -24,7 +26,18 @@ function ChatContainer(props) {
 
                 {/* header */}
                 <div className="w-full flex flex-row justify-between items-center bg-gray-200 dark:bg-gray-700 smooth-transform rounded-b-md">
+                    
+                    {/* user name */}
                     <div className="flex flex-row items-center p-2 dark:text-gray-300">
+                        {/* back icon */}
+                        <div className="flex pr-1 sm:p-0">
+                            <span 
+                                className="rounded-btn sm:hidden"
+                                onClick={() => history.push("/")}
+                            >
+                                <IoMdArrowRoundBack />
+                            </span>
+                        </div>
                         <TempAvatar character="N" />
                         <div className="flex flex-col pl-2">
                             {/* friend name */}

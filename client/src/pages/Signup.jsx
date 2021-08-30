@@ -2,6 +2,8 @@ import React from 'react';
 import Footer from '../components/Footer';
 import bg from "../assets/colenvn.jpg"
 
+import { Link } from "react-router-dom"
+
 function Signup(props) {
     return (
         <div className="flex-grow w-full flex flex-wrap overflow-y-auto">
@@ -35,7 +37,7 @@ function Signup(props) {
 
                         <div className="flex justify-between items-center">
                             <button className="styled-btn">Đăng Kí</button>
-                            <a className="text-blue-600 font-semibold" >Về trang đăng nhập</a>
+                            <Link to="/login" className="text-blue-600 font-semibold" >Về trang đăng nhập</Link>
                         </div>
 
                     </div>
