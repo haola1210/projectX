@@ -2,11 +2,16 @@ import React from 'react';
 import img from "../assets/stayhome.jpg"
 import { FiSettings } from "react-icons/fi";
 import { FaUserEdit } from "react-icons/fa";
-import { RiImageEditLine, RiLockPasswordLine } from "react-icons/ri";
+import { 
+    RiImageEditLine, 
+    RiLockPasswordLine,
+    RiLogoutBoxRLine
+} from "react-icons/ri";
 import ButtonDropDown from "./DropDown/ButtonDropDown"
 import SearchDropDown from './DropDown/SearchDropDown';
-import TempAvatar from './TempAvatar';
 import NewMessageBox from './NewMessage/NewMessageBox';
+
+import { Link } from "react-router-dom"
 
 const SettingBtn = (props) => (
     <span className="rounded-btn bg-blue-500 text-gray-200 dark:text-gray-800 dark:bg-yellow-500 smooth-transform">
@@ -14,21 +19,24 @@ const SettingBtn = (props) => (
     </span>
 )
 
-const SettingItem = ({icon, content}) => (
-    <div className="flex justify-center items-center">
-        <span className="pr-1">{icon}</span>
-        
-        <span className="">{content}</span>
-    </div>
+const SettingItem = ({icon, content, to}) => (
+    <Link to={to}>
+        <div className="flex justify-center items-center">
+            <span className="pr-1">{icon}</span>
+            
+            <span className="">{content}</span>
+        </div>
+    </Link>
 )
 
 const settingList = [
-    { icon : <FaUserEdit />, content : "Đổi tên" },
-    { icon : <RiImageEditLine />, content : "Đổi avatar" },
-    { icon : <RiLockPasswordLine />, content : "Đổi mật khẩu" },
+    { icon : <FaUserEdit />, content : "Đổi tên", to : "change-name" },
+    { icon : <RiImageEditLine />, content : "Đổi avatar", to : "/change-avatar" },
+    { icon : <RiLockPasswordLine />, content : "Đổi mật khẩu", to : "change-password" },
+    { icon : <RiLogoutBoxRLine />, content : "Đăng xuất", to : "/logout" },
 ]
 
-const listOfSettingItem = settingList.map(({ icon, content }) => <SettingItem icon={icon} content={content} />)
+const listOfSettingItem = settingList.map(({ icon, content, to }) => <SettingItem icon={icon} content={content} to={to} />)
 
 function ChatMananger(props) {
     const userName = "Hào"
