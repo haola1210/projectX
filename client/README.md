@@ -25,3 +25,6 @@ bonus cho phan upload file: có thể upload file từ clipboard bằng cách pa
 
 sử dụng useRouteMatch để xử lí logic render chỗ cpn Main, switch không là chưa đủ vì đụng responsive nữa
 chi tiết xem trong cpm Main phần comment
+
+
+implement upload, show preview, moving selection a part of upload image thành công! sử dụng 2 canvas tags, 1 cái để show preview và resize, 1 div moving selection ở trên, sử dụng ref để trỏ đến dom và sử dụng offset để lấy vị trí hiện tại của 2 div. link tham khảo: https://javascript.info/mouse-drag-and-drop
