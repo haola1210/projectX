@@ -184,8 +184,15 @@ function ChangeAvatar(props) {
                 
                 <div 
                     className="relative ring-2 ring-black cursor-move"
-                    onMouseMove={handleMove}
                     ref={droppable}
+
+                    //for PC
+                    onMouseMove={handleMove}
+                    //for mobile
+                    onTouchMove={e => {
+                        e.preventDefault()
+                        handleMove(e)
+                    }}
                 >
                     <input type="file" id="upload" className="hidden" onChange={onUpload} />
                     <label htmlFor="upload">
@@ -213,8 +220,18 @@ function ChangeAvatar(props) {
                         <div 
                             ref={draggable}
                             className="border-2 border-blue-500 h-60 w-60 absolute bg-blue-200 bg-opacity-50 z-10 top-10 left-10"
+                            // for PC
                             onMouseDown={handleMouseDown}
                             onMouseUp={handleMouseUp}
+                            //for mobile
+                            onTouchStart={e => {
+                                e.preventDefault()
+                                handleMouseDown(e)
+                            }}
+                            onTouchCancel={e => {
+                                e.preventDefault()
+                                handleMouseUp(e)
+                            }}
                         />
                     }
                 </div>
