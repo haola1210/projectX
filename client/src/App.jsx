@@ -10,6 +10,7 @@ import {
   Link
 } from "react-router-dom";
 import ChangeAvatar from "./pages/ChangeAvatar";
+import RecoveryPassword from "./pages/RecoveryPassword";
 
 
 function App() {
@@ -26,7 +27,9 @@ function App() {
           <Route path="/sign-up" exact>
             <Signup />
           </Route>
-
+          <Route path="/recovery-password" exact>
+            <RecoveryPassword />
+          </Route>
 
           <Route path="/change-avatar">
             <ChangeAvatar />

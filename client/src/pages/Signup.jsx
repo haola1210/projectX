@@ -31,7 +31,7 @@ function Signup(props) {
                             Đăng kí siêu lẹ 😘
                         </h2>
                         <input type="text" className="styled-input" placeholder="Nick name" autoComplete="new-name" />
-                        <input type="text" className="styled-input" placeholder="Tên đăng nhập" autoComplete="new-name" />
+                        <input type="email" className="styled-input" placeholder="Email đăng nhập" autoComplete="new-name" />
                         <input type="password" className="styled-input" placeholder="Mật khẩu" autoComplete="new-password" />
                         <input type="password" className="styled-input" placeholder="Nhập lại mật khẩu" autoComplete="new-password" />
 

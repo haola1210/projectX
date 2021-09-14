@@ -27,12 +27,12 @@ function Login(props) {
                         Bạn bè đang đợi bạn 😘
                     </h2>
 
-                    <input type="text" className="styled-input" placeholder="Tên đăng nhập" autoComplete="new-name" />
+                    <input type="email" className="styled-input" placeholder="Email đăng nhập" autoComplete="new-name" />
                     <input type="password" className="styled-input" placeholder="Mật khẩu" autoComplete="new-password"/>
 
                     <div className="flex justify-between items-center">
                         <button className="styled-btn">Đăng nhập</button>
-                        <a className="text-blue-500 font-semibold" >Quên mật khẩu?</a>
+                        <Link to="/recovery-password" className="text-blue-500 font-semibold" >Quên mật khẩu?</Link>
                     </div>
                     <div className="divide-y">
                         <div className="mt-4 mb-2 text-center">
