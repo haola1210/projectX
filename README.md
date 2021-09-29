@@ -75,9 +75,9 @@
     + cập nhật lại `currentConversation` theo `#2`
 
 **ER**
-<!-- <img src="./markdown_image/ER.jpg" > -->
+<img src="./markdown_image/ER.jpg" >
 
-<!-- **Từ ER + mongoDB pattern => các model sau:**
--   **USER**: *ID, email, nickName, password, avatarUrl, isActive, lastTimeOnline, 3OldPassword*
--   **CONVERSATION**: *ID, name, timeCreate, memberList, lastestMessage(embed)*
--   **MESSAGE**: *ID, content, timeCreate, conversationID, senderID, seenBy* -->
+**Từ ER + mongoDB pattern => các model sau:**
+-   **USER**: *`ID, email, nickName, password, avatarUrl, isActive, lastTimeActive, 3OldPassword, socketID, roomList (list of conversationID)`*
+-   **CONVERSATION**: *`ID, name, timeCreate, memberList (apply attribute pattern), lastestMessage (embed)`*
+-   **MESSAGE**: *`ID, content, timeCreate, conversationID, senderID`*
