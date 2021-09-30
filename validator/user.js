@@ -20,7 +20,8 @@ const registerSchema = Joi.object({
         "string.base" : "Password should be type of text",
         "string.min" : "Password should have minimum length of {#limit}",
     }),
-    confirmPassword : Joi.string().trim().min(6).lowercase().required().valid(Joi.ref("password")).messages({
+    confirmPassword : Joi.string().trim().min(6).lowercase().required()
+    .valid(Joi.ref("password")).messages({
         "any.required" : "Confirm password is required field",
         "string.empty" : "Confirm password should not be empty",
         "string.base" : "Confirm password should be type of text",

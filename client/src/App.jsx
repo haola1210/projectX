@@ -12,6 +12,18 @@ import {
 import ChangeAvatar from "./pages/ChangeAvatar";
 import RecoveryPassword from "./pages/RecoveryPassword";
 
+import { useEffect } from "react"
+import { PrivateApiInstance } from "./axios/axios.config.js" 
+//test component
+const Test = () => {
+  useEffect(() => {
+    PrivateApiInstance.get("/").then(res => console.log(res.data)).catch((e) => console.log(e))
+  }, [])
+  return (
+    <p>Just a test</p>
+  )
+}
+
 
 function App() {
   return (
@@ -33,6 +45,9 @@ function App() {
 
           <Route path="/change-avatar">
             <ChangeAvatar />
+          </Route>
+          <Route path="/test">
+            <Test />
           </Route>
 
           <Route path="/">

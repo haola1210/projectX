@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react"
-import instance from "../axios/axios.config"
+import { instance } from "../axios/axios.config"
 
 
 const initialState = {

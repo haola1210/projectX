@@ -7,6 +7,7 @@ const express = require("express")
 const cookieParser = require('cookie-parser')
 const createError = require('http-errors')
 const mongoose = require("mongoose")
+const cors = require("cors")
 
 //importing router
 const apiRouter = require("./route/api")
@@ -25,16 +26,19 @@ const app = express()
 const port = process.env.PORT
 
 // basic middleware
-app.use(cookieParser())
+app.use(cookieParser(process.env.COOKIE_SECRET))
 app.use(express.json()) // for parsing application/json
 
-
+//cors configuration
+app.options('*', cors())
+const corsOptions = {
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+}
+app.use(cors(corsOptions))
 
 // routing
-app.get("/", (req, res) => {
-    console.log("ok")
-    res.send("OK")
-})
 
 app.use("/api", apiRouter)
 

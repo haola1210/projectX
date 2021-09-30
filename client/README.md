@@ -29,3 +29,15 @@ chi tiết xem trong cpm Main phần comment
 
 implement upload, show preview, moving selection a part of upload image thành công! sử dụng 2 canvas tags, 1 cái để show preview và resize, 1 div moving selection ở trên, sử dụng ref để trỏ đến dom và sử dụng offset để lấy vị trí hiện tại của 2 div. link tham khảo: https://javascript.info/mouse-drag-and-drop
 - đã update thêm touch event cho cái này để sử dụng đc trên mobile
+
+
+# proxy config:
+-   lúc dev thì thêm proxy ở craco.config.js; devServer. Để fetch api thì nó gọn và tiện cho lúc deploy hơn.
+
+# axios:
+- tạo axios instance để dễ làm việc
+- dùng interceptor để add accessToken vào req và refresh token nếu cần thiết
+
+# form:
+- ko muốn mất công code đống xử lí form bằng tay vì k có gì mới và khó, vì v dùng Formik để làm việc với form
+- validate form fields với Yup
