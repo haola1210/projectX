@@ -2,7 +2,8 @@ import React from 'react';
 import Footer from '../components/Footer';
 import bg from "../assets/colenvn.jpg"
 
-import { Link } from "react-router-dom"
+
+import SignupForm from "../components/Form/SignupForm"
 
 function Signup(props) {
     return (
@@ -30,7 +31,7 @@ function Signup(props) {
                         <h2 className="text-lg font-semibold text-gray-600 dark:text-gray-300 mb-1">
                             Đăng kí siêu lẹ 😘
                         </h2>
-                        <input type="text" className="styled-input" placeholder="Nick name" autoComplete="new-name" />
+                        {/* <input type="text" className="styled-input" placeholder="Nick name" autoComplete="new-name" />
                         <input type="email" className="styled-input" placeholder="Email đăng nhập" autoComplete="new-name" />
                         <input type="password" className="styled-input" placeholder="Mật khẩu" autoComplete="new-password" />
                         <input type="password" className="styled-input" placeholder="Nhập lại mật khẩu" autoComplete="new-password" />
@@ -38,8 +39,8 @@ function Signup(props) {
                         <div className="flex justify-between items-center">
                             <button className="styled-btn">Đăng Kí</button>
                             <Link to="/login" className="text-blue-600 font-semibold" >Về trang đăng nhập</Link>
-                        </div>
-
+                        </div> */}
+                        <SignupForm />
                     </div>
 
                 </div>

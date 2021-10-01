@@ -1,5 +1,6 @@
 import axios from "axios"
 
+// create instances
 const instance = axios.create({
     baseURL : "https://jsonplaceholder.typicode.com/"
 })
@@ -11,7 +12,10 @@ const PublicApiInstance = axios.create({
 const PrivateApiInstance = axios.create({
     baseURL : "/api"
 })
+//
 
+
+// interceptors of private instance
 PrivateApiInstance.interceptors.request.use(function(config){
     // add access token to request
     config.headers.Authorization = "access-token-here"
@@ -21,6 +25,7 @@ PrivateApiInstance.interceptors.request.use(function(config){
     console.log(error.message)
     return Promise.reject(error);
 })
+
 PrivateApiInstance.interceptors.response.use(function(response){
     console.log(response.data)
     return response
@@ -28,7 +33,10 @@ PrivateApiInstance.interceptors.response.use(function(response){
     console.log(error.message)
     return Promise.reject(error);
 })
+//
 
+
+// export every thing
 export {
     instance, PublicApiInstance, PrivateApiInstance
 }
