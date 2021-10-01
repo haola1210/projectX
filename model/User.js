@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt')
 const { Schema, model } = require("mongoose")
 
 const UserSchema = new Schema({
@@ -6,13 +7,13 @@ const UserSchema = new Schema({
         lowercase : true,
         trim : true,
         required : true,
-        unique : true, //unique index
+        unique : [true, "This email '{VALUE}' already exists"], //unique index
     },
     nickName : {
         type : String,
         required : true,
         trim : true,
-        unique : true, //unique index,
+        unique :  [true, "This nick name '{VALUE}' already exists"], //unique index,
         minLength : 6,
         maxlength : 20
     },
@@ -46,7 +47,22 @@ const UserSchema = new Schema({
     }
 
 })
+//
+UserSchema.pre('save', async function (next) {
+    try {
+        const user = this
+        const hash = await bcrypt.hash(user.password, 10)
+        user.password = hash
+        console.log(user)
+        next()
+    } catch (error) {
+        next(error);
+    }
+})
 
+
+
+//
 const User = model("User", UserSchema, "users")
 
 module.exports = User

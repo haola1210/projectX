@@ -81,3 +81,11 @@
 -   **USER**: *`ID, email, nickName, password, avatarUrl, isActive, lastTimeActive, 3OldPassword, socketID, roomList (list of conversationID)`*
 -   **CONVERSATION**: *`ID, name, timeCreate, memberList (apply attribute pattern), lastestMessage (embed)`*
 -   **MESSAGE**: *`ID, content, timeCreate, conversationID, senderID`*
+
+
+
+**Handle error**
+## mongoose error
+-   mongoose err có các properties: message, name, code, keyValue 
+-   tìm docs tụi này mà k ra!
+-   mai nhớ thêm validator vào password user, sửa lại error controller để handle duplication và validation error

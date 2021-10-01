@@ -3,6 +3,7 @@ import { Formik, Form } from "formik"
 import registerSchema from './validator/registerValidate'
 import CustomInput from './CustomInput';
 import { Link } from "react-router-dom"
+import { PrivateApiInstance } from "../../axios/axios.config"
 
 const initialValues = {
     email : '',
@@ -14,8 +15,15 @@ const initialValues = {
 
 function SignupForm(props) {
 
-    const onSubmit = (values, action) => {
-        console.log(values)
+    const onSubmit = async (values, action) => {
+        try {
+            console.log(values, action)
+            const { data } = await PrivateApiInstance.post("/auth/register", {...values})
+            
+        } catch (error) {
+            console.log(error)
+        }
+        action.resetForm()
         action.setSubmitting(false)
     }
 

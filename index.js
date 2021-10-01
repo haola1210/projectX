@@ -12,6 +12,8 @@ const cors = require("cors")
 //importing router
 const apiRouter = require("./route/api")
 
+//import controller
+const errorController = require("./controller/errorController")
 
 //connect to database
 mongoose.connect(process.env.DATABASE_URL).catch(error => console.log(`connecting to database error: ${error.message}`));
@@ -48,15 +50,7 @@ app.use("/api", apiRouter)
 app.use((req, res, next) => next(createError(404, "Page not found")))
 
 //error handling
-app.use((err, req, res, next) => {
-    console.log(err.message, req.originalUrl)
-    // console.log(err.stack)
-    
-    res.status(err.status).json({
-        message : err.message,
-        type : err.status >= 500 ? "server error" : "client error"
-    })
-})
+app.use(errorController)
 
 app.listen(port, () => {
     console.log("server is running")
