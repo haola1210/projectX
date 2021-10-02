@@ -85,7 +85,11 @@
 
 
 **Handle error**
-## mongoose error
--   mongoose err có các properties: message, name, code, keyValue 
--   tìm docs tụi này mà k ra!
--   mai nhớ thêm validator vào password user, sửa lại error controller để handle duplication và validation error
+## toàn bộ trong errorController
+- mongodb error
+- joi error
+- auth error kèm các middlewares:
+    + withNoSession: Tức là muốn vào route đấy thì phải KHÔNG có refreshToken hoặc có nhưng đã đăng xuất
+    + withSession: Tức là muốn vào route đấy thì phải CÓ accessToken hợp lệ và chưa hết hạn
+    + withExpiredSession: Tức là muốn vào route đấy thì phải CÓ refreshToken hợp lệ và chưa đăng xuất
+        + middleware này nằm ở route cấp lại token (token refreshing)

@@ -7,13 +7,13 @@ const UserSchema = new Schema({
         lowercase : true,
         trim : true,
         required : true,
-        unique : [true, "This email '{VALUE}' already exists"], //unique index
+        unique : true, //unique index
     },
     nickName : {
         type : String,
         required : true,
         trim : true,
-        unique :  [true, "This nick name '{VALUE}' already exists"], //unique index,
+        unique :  true, //unique index,
         minLength : 6,
         maxlength : 20
     },
@@ -21,6 +21,8 @@ const UserSchema = new Schema({
         type : String,
         required : true,
         trim : true,
+        minLength : 6,
+        
     },
     avatarUrl : {
         type : String,
