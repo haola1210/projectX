@@ -41,3 +41,24 @@ implement upload, show preview, moving selection a part of upload image thành c
 # form:
 - ko muốn mất công code đống xử lí form bằng tay vì k có gì mới và khó, vì v dùng Formik để làm việc với form
 - validate form fields với Yup
+
+# State management
+## redux
+    - predictable state container
+## react-redux
+    - help us connect redux to react
+## redux-saga
+    - middleware for asynchronous actions of redux
+
+**Folder constructor**
+    ./src <br/>
+    &emsp; /redux <br/>
+    &emsp; &emsp; store.js <br>
+    &emsp; &emsp; /someThing <br>
+    &emsp; &emsp; &emsp; someThingActions.js <br>
+    &emsp; &emsp; &emsp; someThingReducer.js <br>
+
+**Connect redux store to react**: wrap whole app in provider of react-redux with store from redux
+**Use redux state and dispatch in react**: 
+    - HOC: mapStateToProp, mapDispatchToProp, connect
+    - hook: useSelector, useDispatch (i use this)
