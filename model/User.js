@@ -49,7 +49,9 @@ const UserSchema = new Schema({
     }
 
 })
-//
+
+
+// schema middlewares
 UserSchema.pre('save', async function (next) {
     try {
         const user = this
@@ -58,13 +60,32 @@ UserSchema.pre('save', async function (next) {
         console.log(user)
         next()
     } catch (error) {
-        next(error);
+        next({
+            name : "DB Execute",
+            message : error.message
+        });
     }
 })
-
-
-
 //
+
+//schema static methods
+UserSchema.statics.verifyUser = async function({ email, password }){
+    try {
+        const user = await this.findOne({ email }).exec()
+        if(user == null) throw new Error("Email không tồn tại")
+        const resultVerify = await bcrypt.compare(password, user.password)
+        if(resultVerify){
+            return user
+        } else throw new Error("Password không đúng")
+    } catch (error) {
+        throw new Error({
+            name : "DB Execute",
+            message : error.message
+        })
+    }
+}
+
+
 const User = model("User", UserSchema, "users")
 
 module.exports = User

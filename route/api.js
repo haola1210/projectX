@@ -1,10 +1,7 @@
 const Router = require("express").Router()
 const authRouter = require("./auth")
+const userRouter = require("./user")
 
 Router.use("/auth", authRouter)
-Router.get("/", (req, res) => {
-    console.log("ok")
-    res.send("OK")
-})
-
+Router.use("/user", userRouter)
 module.exports = Router

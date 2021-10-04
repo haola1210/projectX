@@ -2,6 +2,7 @@ import React from 'react';
 import bg from "../assets/stayhome.jpg"
 import Footer from '../components/Footer';
 import { Link } from "react-router-dom"
+import LoginForm from '../components/Form/LoginForm';
 
 function Login(props) {
     return (
@@ -27,13 +28,15 @@ function Login(props) {
                         Bạn bè đang đợi bạn 😘
                     </h2>
 
-                    <input type="email" className="styled-input" placeholder="Email đăng nhập" autoComplete="new-name" />
+                    {/* <input type="email" className="styled-input" placeholder="Email đăng nhập" autoComplete="new-name" />
                     <input type="password" className="styled-input" placeholder="Mật khẩu" autoComplete="new-password"/>
 
                     <div className="flex justify-between items-center">
                         <button className="styled-btn">Đăng nhập</button>
                         <Link to="/recovery-password" className="text-blue-500 font-semibold" >Quên mật khẩu?</Link>
-                    </div>
+                    </div> */}
+                    <LoginForm />
+
                     <div className="divide-y">
                         <div className="mt-4 mb-2 text-center">
                             <label className="text-gray-500 ">Chưa có tài khoản?</label>

@@ -15,6 +15,11 @@ const errorController = (err, req, res, next) => {
         errorObject.value = err.details[0].context.value
         errorObject.message = err.details[0].message
         errorObject.where = "Validating Data"
+
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject
+        })
     } 
 
     //duplicate index value in mongoDB
@@ -23,12 +28,22 @@ const errorController = (err, req, res, next) => {
         errorObject.value = err.keyValue[errorObject.key]
         errorObject.message = `${errorObject.value} đã được sử dụng`
         errorObject.where = "Storing Data"
+
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject
+        })
     }
 
     //error from auth
-    if(err.name = "Authentication Error" || err.name == "Role Error"){
+    if(err.name == "Authentication Error" || err.name == "Role Error"){
         errorObject.message = err.message
         errorObject.where = "Authentication"
+
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject
+        })
     }
 
     //error when session expired
@@ -36,12 +51,27 @@ const errorController = (err, req, res, next) => {
         errorObject.message = err.message
         errorObject.where = "Authentication"
         errorObject.code = 403
+
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject
+        })
     }
 
-    res.json({
-        type : err.status >= 500 ? "server error" : "client error",
-        errorObject
-    })
+    if(err.code == 404){
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject : err
+        })
+    }
+
+    if(err.name == "DB Execute"){
+        return res.json({
+            type : err.status >= 500 ? "server error" : "client error",
+            errorObject : err
+        })
+    }
+    
 }
 
 module.exports = errorController;

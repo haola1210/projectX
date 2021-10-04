@@ -1,26 +1,33 @@
 const jwt = require("jsonwebtoken")
 const User = require("../model/User")
 
-const withSession = (req, res, next) => {
-    if(req.headers && req.headers.authentication){
-        const accessToken = req.headers.authentication
-        jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
-            if(err.name == "TokenExpiredError") return next({
+const withSession = async (req, res, next) => {
+    // console.log(req.headers)
+    if(req.headers && req.headers.authorization){
+        const accessToken = req.headers.authorization
+        console.log("verify AT")
+        try {
+            const decoded = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
+            console.log("verify User")
+            const user = await User.findById(decoded.userId).exec()
+            if(user == null) throw new Error("Không tìm thấy user này")
+            if(user) return next()
+
+        } catch (error) {
+            if(error.name == "TokenExpiredError") return next({
                 name : "Session Expired",
                 message : "Token hết hạn"
             })
-            if(err) return next({
+            
+            if(error) return next({
                 name : "Authentication Error",
-                message : "Token không hợp lệ"
+                message : error.message
             })
-            if(decoded){
-                User.findById(decoded.userId).exec()
-                .then(user => next())
-                .catch(error => next({
-                    name : "Authentication Error",
-                    message : "Không tìm thấy user này"
-                }))
-            }
+        }
+    } else {
+        return next({
+            name : "Authentication Error",
+            message : "Token không hợp lệ"
         })
     }
 }

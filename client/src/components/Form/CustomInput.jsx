@@ -6,9 +6,11 @@ function CustomInput(props) {
     return (
         <div>
             <Field name={name} >
-                {({ field }) => (
+                {({ field }) => {
+                    console.log(field)
+                    return(
                     <input {...field} {...rest}/>
-                )}
+                )}}
             </Field>
             <ErrorMessage name={name}>
                 {msg => (

@@ -47,7 +47,10 @@ app.use("/api", apiRouter)
 
 
 // 404 handling
-app.use((req, res, next) => next(createError(404, "Page not found")))
+app.use((req, res, next) => next({
+    code : 404,
+    message : "Page not found"
+}))
 
 //error handling
 app.use(errorController)

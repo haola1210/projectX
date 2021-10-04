@@ -3,7 +3,7 @@ import { Formik, Form } from "formik"
 import registerSchema from './validator/registerValidate'
 import CustomInput from './CustomInput';
 import { Link } from "react-router-dom"
-import { PrivateApiInstance } from "../../axios/axios.config"
+import { PublicApiInstance } from "../../axios/axios.config"
 
 const initialValues = {
     email : '',
@@ -18,8 +18,8 @@ function SignupForm(props) {
     const onSubmit = async (values, action) => {
         try {
             console.log(values, action)
-            const { data } = await PrivateApiInstance.post("/auth/register", {...values})
-            
+            const { data } = await PublicApiInstance.post("/auth/register", {...values})
+            console.log(data)
         } catch (error) {
             console.log(error)
         }
