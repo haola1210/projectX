@@ -5,12 +5,10 @@ function CustomInput(props) {
     const { name, ...rest } = props
     return (
         <div>
-            <Field name={name} >
-                {({ field }) => {
-                    console.log(field)
-                    return(
+            <Field name={name}  >
+                {({ field }) => (
                     <input {...field} {...rest}/>
-                )}}
+                )}
             </Field>
             <ErrorMessage name={name}>
                 {msg => (

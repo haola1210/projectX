@@ -6,6 +6,7 @@ const errorController = (err, req, res, next) => {
     // console.log(Object.keys(err.keyValue))
     const errorObject = {}
 
+    console.log("Có lỗi!!")
     //error from JOI schema
     if(err.name == "ValidationError"){  
         // console.log(err.details[0].context)
@@ -39,7 +40,7 @@ const errorController = (err, req, res, next) => {
     if(err.name == "Authentication Error" || err.name == "Role Error"){
         errorObject.message = err.message
         errorObject.where = "Authentication"
-
+        errorObject.key = err.key
         return res.json({
             type : err.status >= 500 ? "server error" : "client error",
             errorObject
@@ -59,13 +60,6 @@ const errorController = (err, req, res, next) => {
     }
 
     if(err.code == 404){
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject : err
-        })
-    }
-
-    if(err.name == "DB Execute"){
         return res.json({
             type : err.status >= 500 ? "server error" : "client error",
             errorObject : err

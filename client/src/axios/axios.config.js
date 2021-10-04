@@ -18,7 +18,7 @@ const PrivateApiInstance = axios.create({
 // interceptors of private instance
 PrivateApiInstance.interceptors.request.use(function(config){
     // add access token to request
-    config.headers.Authorization = "access-token-here"
+    config.headers.Authorization = localStorage.getItem("accessToken")
     console.log(config)
     return config
 }, function(error){

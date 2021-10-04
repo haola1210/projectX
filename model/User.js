@@ -69,20 +69,23 @@ UserSchema.pre('save', async function (next) {
 //
 
 //schema static methods
-UserSchema.statics.verifyUser = async function({ email, password }){
-    try {
+UserSchema.statics.verifyUser = function({ email, password }){
+    return new Promise(async (resolve, reject) => {
         const user = await this.findOne({ email }).exec()
-        if(user == null) throw new Error("Email không tồn tại")
+        if(user == null) return reject({
+            name : "Authentication Error",
+            key : "email",
+            message : "Email không tồn tại"
+        })
         const resultVerify = await bcrypt.compare(password, user.password)
         if(resultVerify){
-            return user
-        } else throw new Error("Password không đúng")
-    } catch (error) {
-        throw new Error({
-            name : "DB Execute",
-            message : error.message
+            return resolve(user)
+        } else return reject({
+            name : "Authentication Error",
+            key : "password",
+            message : "Password không đúng"
         })
-    }
+    })
 }
 
 

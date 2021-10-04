@@ -41,7 +41,10 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 // routing
-
+app.use((req, res, next) => {
+    console.log(req.originalUrl)
+    next()
+})
 app.use("/api", apiRouter)
 
 

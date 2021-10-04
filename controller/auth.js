@@ -48,8 +48,9 @@ const registerController =  async (req, res, next) => {
 const loginController = async (req, res, next) => {
     try {
         const value = await loginValidator(req.body)
+        console.log(value)
         const user = await User.verifyUser(value)
-
+        console.log(user)
         const [AT, RT] = await Promise.all([
             generateToken(
                 {userId : user._id}, 
@@ -74,6 +75,7 @@ const loginController = async (req, res, next) => {
         })
 
     } catch (error) {
+        console.log(error)
         next(error)
     }
 }
