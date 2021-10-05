@@ -11,7 +11,10 @@ const withSession = async (req, res, next) => {
             console.log("verify User")
             const user = await User.findById(decoded.userId).exec()
             if(user == null) throw new Error("Không tìm thấy user này")
-            if(user) return next()
+            if(user) {
+                res.locals.user = user
+                return next()
+            }
 
         } catch (error) {
             if(error.name == "TokenExpiredError") return next({

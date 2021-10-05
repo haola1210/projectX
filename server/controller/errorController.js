@@ -1,3 +1,5 @@
+const createError = require('http-errors')
+
 const errorController = (err, req, res, next) => {
     // console.log(err)
     // console.log(err.message, req.originalUrl)
@@ -17,10 +19,7 @@ const errorController = (err, req, res, next) => {
         errorObject.message = err.details[0].message
         errorObject.where = "Validating Data"
 
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject
-        })
+        return res.status(400).json(createError(400, errorObject))
     } 
 
     //duplicate index value in mongoDB
@@ -30,10 +29,7 @@ const errorController = (err, req, res, next) => {
         errorObject.message = `${errorObject.value} đã được sử dụng`
         errorObject.where = "Storing Data"
 
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject
-        })
+        return res.status(409).json(createError(409, errorObject))
     }
 
     //error from auth
@@ -41,29 +37,20 @@ const errorController = (err, req, res, next) => {
         errorObject.message = err.message
         errorObject.where = "Authentication"
         errorObject.key = err.key
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject
-        })
+        return res.status(400).json(createError(400, errorObject))
     }
 
     //error when session expired
     if(err.name == "Session Expired"){
         errorObject.message = err.message
         errorObject.where = "Authentication"
-        errorObject.code = 403
+        errorObject.code = 401
 
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject
-        })
+        return res.status(401).json(createError(401, errorObject))
     }
 
     if(err.code == 404){
-        return res.json({
-            type : err.status >= 500 ? "server error" : "client error",
-            errorObject : err
-        })
+        return res.status(404).json(createError(404, "Trang không tồn tại!"))
     }
     
 }

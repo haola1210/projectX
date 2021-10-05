@@ -1,58 +1,61 @@
+// import from libs
+import { useEffect } from "react"
+import { useSelector } from "react-redux"
+import {
+  BrowserRouter as Router,
+  Switch
+} from "react-router-dom";
+import { useDispatch } from "react-redux"
+
+//import components and pages
 import Header from "./components/Header"
 import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 import Main from "./pages/Main"
-
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import ChangeAvatar from "./pages/ChangeAvatar";
 import RecoveryPassword from "./pages/RecoveryPassword";
+import ErrorGlobal from "./components/ErrorGlobal";
 
-import { useEffect } from "react"
-import { PrivateApiInstance } from "./axios/axios.config.js" 
-//test component
-const Test = () => {
-  useEffect(() => {
-    PrivateApiInstance.get("/").then(res => console.log(res.data)).catch((e) => console.log(e))
-  }, [])
-  return (
-    <p>Just a test</p>
-  )
-}
+//import routes
+import PublicRoute from "./routers/PublicRoute"
+import PrivateRoute from "./routers/PrivateRoute"
 
+//import saga actions
+import { FETCH_USER_SESSION } from "./redux/session/sessionActions"
 
 function App() {
+  const dispatch = useDispatch()
+  const { errorMessage } = useSelector(state => state.error)
+  const session = useSelector(state => state.session)
+  useEffect(() => {
+    dispatch({ type : FETCH_USER_SESSION })
+  }, [])
+
   return (
     <Router>
 
       <div className="flex flex-col w-screen h-screen justify-center  items-center bg-gray-100 dark:bg-gray-900 transition duration-500">
         <Header />
+        { errorMessage && <ErrorGlobal message={errorMessage} /> }
 
         <Switch>
-          <Route path="/login" exact>
+          <PublicRoute path="/login" exact>
             <Login />
-          </Route>
-          <Route path="/sign-up" exact>
+          </PublicRoute>
+          <PublicRoute path="/sign-up" exact>
             <Signup />
-          </Route>
-          <Route path="/recovery-password" exact>
+          </PublicRoute>
+          <PublicRoute path="/recovery-password" exact>
             <RecoveryPassword />
-          </Route>
+          </PublicRoute>
 
-          <Route path="/change-avatar">
+          <PrivateRoute path="/change-avatar">
             <ChangeAvatar />
-          </Route>
-          <Route path="/test">
-            <Test />
-          </Route>
+          </PrivateRoute>
 
-          <Route path="/">
+          <PrivateRoute path="/">
             <Main />
-          </Route>
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>

@@ -1,28 +1,31 @@
 import { 
-    STORE_ACCESS_TOKEN,
-    CLEAR_ACCESS_TOKEN    
+    START_FETCH_USER_SESSION,
+    FETCH_USER_SESSION_FAILURE,
+    FETCH_USER_SESSION_SUCCESS
 } from "./sessionActions"
 
 
 const initialState = {
-    accessToken : null,
     isLoading : false,
     user : null
 }
 
 export const sessionReducer = (state = initialState, action) => {
     switch (action.type) {
-        case STORE_ACCESS_TOKEN: 
+        case START_FETCH_USER_SESSION:
             return {
-                ...state,
-                accessToken : action.payload.accessToken
+                ...initialState,
+                isLoading : true
             }
         
-        case CLEAR_ACCESS_TOKEN:
-            return {
-                ...state,
-                accessToken : null
-            }
+            case FETCH_USER_SESSION_SUCCESS:
+                return {
+                    ...initialState,
+                    user : action.payload.user
+                }
+            
+            case FETCH_USER_SESSION_FAILURE:
+                return initialState
         
         default: return state
     }

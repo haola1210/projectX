@@ -26,7 +26,7 @@ const UserSchema = new Schema({
     },
     avatarUrl : {
         type : String,
-        default : undefined,
+        default : null,
     },
     isActive : {
         type : Boolean,
@@ -42,7 +42,7 @@ const UserSchema = new Schema({
     },
     socketId : {
         type : String,
-        default : undefined,
+        default : null,
     },
     roomList : {
         type : [String]

@@ -15,6 +15,7 @@ const withExpiredSession = (req, res, next) => {
                     message : "Bạn cần đăng nhập lại"
                 })
             } else {
+                res.locals.decoded = decoded
                 next()
             }
         })

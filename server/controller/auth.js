@@ -81,8 +81,33 @@ const loginController = async (req, res, next) => {
 }
 
 
+const refreshTokenController = async (req, res, next) => {
+    try {
+        const { userId } = res.locals.decoded
+        const user = await User.findById(userId).exec()
+        if(user == null) throw new Error({
+            name : "Authentication Error",
+            message : "User không tồn tại!"
+        })
+        
+        const AT = await generateToken(
+            {userId : userId}, 
+            process.env.ACCESS_TOKEN_SECRET, 
+            {expiresIn : 60}
+        )
+        res.json({
+            accessToken : AT
+        })
+        
+    } catch (error) {
+        next(error)
+    }
+}
+
+
 // export everything
 module.exports = {
     registerController,
     loginController,
+    refreshTokenController
 }

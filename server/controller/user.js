@@ -24,7 +24,23 @@ const deleteOneUser = async (req, res, next) => {
     }
 }
 
+const getUserInfoById = (req, res, next) => {
+    const { _id, email, nickName, roomList, avatarUrl, socketId } = res.locals.user
+    
+    res.json({
+        user : {
+            id : _id,
+            email,
+            nickName,
+            roomList,
+            avatarUrl,
+            socketId
+        }
+    })
+}
+
 module.exports = {
     getAllUsers,
-    deleteOneUser
+    deleteOneUser,
+    getUserInfoById
 }
