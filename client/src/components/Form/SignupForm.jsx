@@ -4,6 +4,9 @@ import registerSchema from './validator/registerValidate'
 import CustomInput from './CustomInput';
 import { Link } from "react-router-dom"
 import { PublicApiInstance } from "../../axios/axios.config"
+import { useDispatch } from "react-redux"
+import { FETCH_USER_SESSION } from "../../redux/session/sessionActions"
+import { STORE_ERROR_MESSAGE } from "../../redux/globalError/errorActions"
 
 const initialValues = {
     email : '',
@@ -14,17 +17,35 @@ const initialValues = {
 
 
 function SignupForm(props) {
+    const dispatch = useDispatch()
 
     const onSubmit = async (values, action) => {
         try {
             console.log(values, action)
             const { data } = await PublicApiInstance.post("/auth/register", {...values})
-            console.log(data)
+            localStorage.setItem("accessToken", data.accessToken)
+            action.resetForm()
+            
+            dispatch({ type : FETCH_USER_SESSION })
+
         } catch (error) {
-            console.log(error)
-        }
-        action.resetForm()
-        action.setSubmitting(false)
+            if(error.response !== undefined){
+                const { data } = error.response
+    
+                console.log("err: ", data)
+                if(data.key){
+                    action.setFieldError(data.key, data.message)
+                } else {
+                    dispatch({
+                        type : STORE_ERROR_MESSAGE,
+                        payload : {
+                            errorMessage : data.message
+                        }
+                    })
+                }
+                action.setSubmitting(false)
+            }
+        }  
     }
 
     return (

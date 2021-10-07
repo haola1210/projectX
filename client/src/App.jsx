@@ -1,11 +1,9 @@
 // import from libs
-import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import {
   BrowserRouter as Router,
   Switch
 } from "react-router-dom";
-import { useDispatch } from "react-redux"
 
 //import components and pages
 import Header from "./components/Header"
@@ -20,16 +18,11 @@ import ErrorGlobal from "./components/ErrorGlobal";
 import PublicRoute from "./routers/PublicRoute"
 import PrivateRoute from "./routers/PrivateRoute"
 
-//import saga actions
-import { FETCH_USER_SESSION } from "./redux/session/sessionActions"
 
 function App() {
-  const dispatch = useDispatch()
+ 
   const { errorMessage } = useSelector(state => state.error)
-  const session = useSelector(state => state.session)
-  useEffect(() => {
-    dispatch({ type : FETCH_USER_SESSION })
-  }, [])
+ 
 
   return (
     <Router>

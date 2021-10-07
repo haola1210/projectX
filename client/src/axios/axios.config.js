@@ -49,6 +49,8 @@ PrivateApiInstance.interceptors.response.use(function(response){
             return PrivateApiInstance(config)
         })
         .catch(e => Promise.reject(e))
+    } else if(status === 400) {
+        return Promise.reject({ message : "Bạn cần đăng nhập lại!" })
     } else {
         return Promise.reject(error)
     }
